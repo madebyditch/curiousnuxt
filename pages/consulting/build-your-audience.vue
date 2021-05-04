@@ -126,8 +126,8 @@ export default {
         { hid: 'og:title', name: 'og:title', content: 'Curious: Coaching - Learn to build your audience in 60 min a day' },
         { hid: 'og:description', name: 'og:description', content: "You don't need to spend endless hours increasing your connections. We'll show you how to leverage Linkedin to grow your influence and build your network in less than an hour a day." },
 
-         { hid: 'og:image', name: 'og:image', content: 'https://discovercurious.com/workshops/build-audience.svg' },
-         { hid: 'og:image:type', name: 'og:image:type', content: 'image/svg' },
+         { hid: 'og:image', name: 'og:image', content: 'https://discovercurious.com/workshops/build-audience.png' },
+         { hid: 'og:image:type', name: 'og:image:type', content: 'image/png' },
          { hid: 'og:image:width', name: 'og:image:width', content: '1168' },
          { hid: 'og:image:height', name: 'og:image:height', content: '1034' },
       ]

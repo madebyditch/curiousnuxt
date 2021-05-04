@@ -109,8 +109,8 @@ export default {
         { hid: 'og:title', name: 'og:title', content: 'Curious: Coaching - Design your personal digital presence to build your brand' },
         { hid: 'og:description', name: 'og:description', content: "" },
 
-         { hid: 'og:image', name: 'og:image', content: 'https://discovercurious.com/workshops/network.svg' },
-         { hid: 'og:image:type', name: 'og:image:type', content: 'image/svg' },
+         { hid: 'og:image', name: 'og:image', content: 'https://discovercurious.com/workshops/network.png' },
+         { hid: 'og:image:type', name: 'og:image:type', content: 'image/png' },
          { hid: 'og:image:width', name: 'og:image:width', content: '1168' },
          { hid: 'og:image:height', name: 'og:image:height', content: '1034' },
       ]
