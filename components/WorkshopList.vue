@@ -1,5 +1,19 @@
 <template>
         <div id="workshops" class="caseStudyList workshopList" v-bind:class="this.type == 'full' ? 'studiesFull' : 'col3'">
+          <nuxt-link to="/consulting/strategies-to-create-sales" tag="div" class="caseStudy col">
+            <div class="picWrap">
+              <div class="pic">
+                <div class="responsiveImage" v-lazy:background-image="`/workshops/create-sales.svg`"></div>
+                <span class="learnMore">Learn More</span>
+              </div>
+            </div>
+            <div class="studyInfo">
+              <h4><span>Resource:</span> Why Most Marketing Strategies Don’t Create Sales and How to Fix it</h4>
+              <h5>Type: Download <br />
+                Cost: Free
+              </h5>
+            </div>
+          </nuxt-link>
 
           <nuxt-link to="/consulting/design-your-presence" tag="div" class="caseStudy col">
             <div class="picWrap">
