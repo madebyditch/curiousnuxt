@@ -19,7 +19,7 @@
     <section class="studySection bg-gold s-cta">
       <div class="pageWidth">
         <div class="ctaText">
-          <span>Get your free marketing stratey guide.</span> <a href="https://share.hsforms.com/180tDvXPuQ3ezIcEGc29iwA2bew1" target="_blank" class="button">I'm interested.</a>
+          <span>Get your free marketing strategy guide.</span> <a href="https://share.hsforms.com/180tDvXPuQ3ezIcEGc29iwA2bew1" target="_blank" class="button">I'm interested.</a>
         </div>
       </div>
     </section>
