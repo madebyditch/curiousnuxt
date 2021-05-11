@@ -50,6 +50,7 @@
 
 <script>
 import Vue from 'vue';
+import axios from 'axios';
 
 export default Vue.extend({
   name: 'contact',
@@ -76,45 +77,43 @@ export default Vue.extend({
         if(this.senderName != '' && this.senderEmail != '' && this.contactMessage != ''){
           switch(this.contactSubject){
             case "1":
-              var newSubject = " - I need branding help"
+              var newSubject = "Curious Website - I need branding help"
               var type = 1
               break;
             case "2":
-              var newSubject = " -  I need marketing help";
+              var newSubject = "Curious Website - I need marketing help";
               var type = 2
               break;
             case "3":
-              var newSubject = " -  I need product help";
+              var newSubject = "Curious Website - I need product help";
               var type = 3
               break;
             case "4":
-              var newSubject = " -  I'd like to schedule a Design Sprint";
+              var newSubject = "Curious Website - I'd like to schedule a Design Sprint";
               var type = 3
               break;
             default:
-              var newSubject = " -  General Inquiry";
+              var newSubject = "Curious Website - General Inquiry";
               var type = 0
               break;
           }
-
-          $.ajax({
-            url: 'https://discovercurious.com/.netlify/functions/send-emails',
-            type: 'POST',
-            data: {
-                senderName: that.senderName,
-                senderEmail: that.senderEmail,
+          
+          let params = {
+            senderName: that.senderName,
+            senderEmail: that.senderEmail,
                 // org: that.senderCompany,
-                message: that.contactMessage,
-                subject: newSubject,
-                messageType: type
-            },
-            success: function(result) {
-                console.log(result);
-                that.messageSuccess = true;
-            },
-            error: function(error) {
-                console.log('email error occurred: ' + error);
-            }
+            message: that.contactMessage,
+            subject: newSubject,
+            messageType: type
+          }
+
+          axios.post('https://discovercurious.com/.netlify/functions/send-emails', JSON.stringify(params))
+          .then((response) => {
+            that.messageSuccess = true;
+            console.log('SUCCEEDED: lambda sent: \n', response.data);            
+          })
+          .catch((error) => {
+            console.log('FAILED: lambda failed', error);
           });
         }else{
           this.messageErrors = 'Name, Email & Message cannot be blank'
