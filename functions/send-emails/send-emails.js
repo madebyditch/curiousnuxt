@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios')
 const sgMail = require('@sendgrid/mail')
 
 exports.handler = async function(event, context, callback) {
@@ -24,11 +24,12 @@ exports.handler = async function(event, context, callback) {
             "value": message
         }]
     };
+    axios.post(process.env.SLACK_WEBHOOK, slackMsg).then((response) => {
+        console.log('SUCCEEDED: Sent slack webhook: \n', response.data);
+    }).catch((error) => {});
 
     try {
         await sgMail.send(data);
-        axios.post(process.env.SLACK_WEBHOOK, slackMsg);
-
         return {
             statusCode: 200,
             body: 'Message sent',
