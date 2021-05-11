@@ -20,8 +20,8 @@
             <input type="text" id="name" name="name" v-model="senderName" placeholder="My name is" required>
             <label for="email">Your Email Address</label>
             <input type="email" id="email" name="email" v-model="senderEmail" placeholder="My email address is" required>
-            <!-- <label for="company">Your Company</label>
-            <input type="text" id="company" name="company" v-model="senderCompany" placeholder="I represent (organization)"> -->
+            <label for="company">Your Company</label>
+            <input type="text" id="company" name="company" v-model="senderCompany" placeholder="I represent (organization)">
             <label for="discount">How much of a discount?</label>
             <input type="text" id="discount" name="discount" v-model="eatSpam" class="hp">
             <div class="selectList">
@@ -101,8 +101,7 @@ export default Vue.extend({
           let params = {
             senderName: that.senderName,
             senderEmail: that.senderEmail,
-                // org: that.senderCompany,
-            message: that.contactMessage,
+            message: `${that.contactMessage} \n \n Sent by: ${that.senderName} (${that.senderEmail}), from ${that.senderCompany}`,
             subject: newSubject,
             messageType: type
           }

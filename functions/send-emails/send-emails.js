@@ -5,7 +5,7 @@ exports.handler = async function(event, context, callback) {
     let emails = ["hello@discovercurious.com", "branding@discovercurious.com", "marketing@discovercurious.com", "product@discovercurious.com"];
     const { message, senderEmail, senderName, subject, messageType } = JSON.parse(event.body);
     const slackMsg = {
-        text: `New Contact form submission from ${senderName} - ${senderEmail}. \n re: ${subject} \n to: ${emails[messageType]}`
+        text: `New contact form submission: ${senderName} (${senderEmail}). \n re: ${subject} \n to: ${emails[messageType]}`
     };
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
