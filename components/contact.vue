@@ -20,8 +20,8 @@
             <input type="text" id="name" name="name" v-model="senderName" placeholder="My name is" required>
             <label for="email">Your Email Address</label>
             <input type="email" id="email" name="email" v-model="senderEmail" placeholder="My email address is" required>
-            <label for="company">Your Company</label>
-            <input type="text" id="company" name="company" v-model="senderCompany" placeholder="I represent (organization)">
+            <!-- <label for="company">Your Company</label>
+            <input type="text" id="company" name="company" v-model="senderCompany" placeholder="I represent (organization)"> -->
             <label for="discount">How much of a discount?</label>
             <input type="text" id="discount" name="discount" v-model="eatSpam" class="hp">
             <div class="selectList">
@@ -76,37 +76,37 @@ export default Vue.extend({
         if(this.senderName != '' && this.senderEmail != '' && this.contactMessage != ''){
           switch(this.contactSubject){
             case "1":
-              var newSubject = "discovercurious.com: I need branding help";
-              var toEmail = "branding@discovercurious.com"
+              var newSubject = " - I need branding help"
+              var type = 1
               break;
             case "2":
-              var newSubject = "discovercurious.com: I need marketing help";
-              var toEmail = "marketing@discovercurious.com"
+              var newSubject = " -  I need marketing help";
+              var type = 2
               break;
             case "3":
-              var newSubject = "discovercurious.com: I need product help";
-              var toEmail = "product@discovercurious.com"
+              var newSubject = " -  I need product help";
+              var type = 3
               break;
             case "4":
-              var newSubject = "discovercurious.com: I'd like to schedule a Design Sprint";
-              var toEmail = "product@discovercurious.com"
+              var newSubject = " -  I'd like to schedule a Design Sprint";
+              var type = 3
               break;
             default:
-              var newSubject = "discovercurious.com: General Inquiry";
-              var toEmail = "hello@discovercurious.com"
+              var newSubject = " -  General Inquiry";
+              var type = 0
               break;
           }
 
           $.ajax({
-            url: 'https://brycehowitson.com/curiousContact.php',
-            type: 'GET',
+            url: 'https://discovercurious.com/.netlify/functions/send-emails',
+            type: 'POST',
             data: {
-                to: toEmail,
-                name: that.senderName,
-                email: that.senderEmail,
-                org: that.senderCompany,
-                comment: that.contactMessage,
+                senderName: that.senderName,
+                senderEmail: that.senderEmail,
+                // org: that.senderCompany,
+                message: that.contactMessage,
                 subject: newSubject,
+                messageType: type
             },
             success: function(result) {
                 console.log(result);
