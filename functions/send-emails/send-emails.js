@@ -1,12 +1,11 @@
+import axios from 'axios';
 const sgMail = require('@sendgrid/mail')
-const {
-    SENDGRID_API_KEY,
-    SENDGRID_TO_EMAIL,
-    SENDGRID_FROM_EMAIL,
-} = process.env;
 
 exports.handler = async function(event, context, callback) {
     const { message, senderEmail, senderName } = JSON.parse(event.body);
+    const slackMsg = JSON.stringify({
+        text: `New Contact form submission from ${senderName}. \n Check your email!`,
+    });
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
     const data = {
@@ -28,6 +27,8 @@ exports.handler = async function(event, context, callback) {
 
     try {
         await sgMail.send(data);
+        axios.post(process.env.SLACK_WEBHOOK, slackMsg);
+
         return {
             statusCode: 200,
             body: 'Message sent',
@@ -38,4 +39,5 @@ exports.handler = async function(event, context, callback) {
             body: JSON.stringify({ msg: err.message }),
         };
     }
+
 };
